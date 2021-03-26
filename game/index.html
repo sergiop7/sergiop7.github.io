@@ -118,7 +118,11 @@ var ball_5 = new THREE.Mesh(shape_5, cover_5);
 ball_5.position.set(-120,-250,0);
 avatar.add(ball_5);
     
- //movimiento  
+ //movimiento 
+    
+let isCartWheeling = true;    
+let mueveteenx = false;  
+    
 document.addEventListener("keydown", teclaApretada);
 
 function teclaApretada(e) {
@@ -138,9 +142,16 @@ if (codigo =="KeyD") {
 avatar.position.x -=5;
 }
 
-}
-    
-    
+if (codigo =="KeyC") {   
+ isCartWheeling= !isCartWheeling;   }
+
+
+if (codigo =="KeyG") {   
+ mueveteenx= !mueveteenx;   }
+   
+
+}    
+     
     
     
     
@@ -150,8 +161,15 @@ avatar.position.x -=5;
     //rotacion 
 function animate() {
     requestAnimationFrame(animate);
+    if (isCartWheeling){
     avatar.rotation.z = avatar.rotation.z + 0.05;
-    renderer.render(scene, camera);
+    }
+      if (mueveteenx){
+    avatar.rotation.x = avatar.rotation.x + 0.05;
+    }
+   
+       
+        renderer.render(scene, camera);
 }
 animate();
 </script>
