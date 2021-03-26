@@ -6,6 +6,13 @@
   var flat = {flatShading: true};
   var light = new THREE.AmbientLight('white', 0.8);
   scene.add(light);
+    
+    
+      var scene = new THREE.Scene();
+  var flat = {flatShading: true};
+  var light = new THREE.PointLight('white', 0.8);
+  scene.add(light)
+    light.position.set(50,100,200)
 
   // The "camera" is what sees the stuff:
   var aspectRatio = window.innerWidth / window.innerHeight;
@@ -20,9 +27,132 @@
 
   // ******** START CODING ON THE NEXT LINE ********
 
+    
+      var avatar = new THREE.Mesh(shape_6, cover_6);
+    scene.add(avatar)
+    //ball6 barriga
+    
+        var shape_6 = new THREE.SphereGeometry(150,50,50);
+var cover_6 = new THREE.MeshPhongMaterial({color:'brown'});
+var ball_6 = new THREE.Mesh(shape_6, cover_6);
+ball_6.position.set(0,0,0);
+avatar.add(ball_6);
+  
 
+    
+    
+    
+    
+    
+    
+    //ball1 mano derecha
+    
+    var barra = new THREE.CylinderGeometry(10,10,150,50);
+var flat_1 = new THREE.MeshPhongMaterial({color :'#f2b177'});
+var cilindro_flat = new THREE.Mesh(barra, flat_1);
+avatar.add(cilindro_flat);
+cilindro_flat.rotation.set(0,0,90*Math.PI/180);
+cilindro_flat.position.set(200,0,0)    
+    
+var shape_1 = new THREE.SphereGeometry(50,50,50);
+var cover_1 = new THREE.MeshPhongMaterial({color:'white'});
+var ball_1 = new THREE.Mesh(shape_1, cover_1);
+ball_1.position.set(250,0,0);
+avatar.add(ball_1);
+    
+//ball2 mano izquierda
+    
+var barra = new THREE.CylinderGeometry(10,10,150,50);
+var flat_2 = new THREE.MeshPhongMaterial({color :'#f2b177'});
+var cilindro_flat = new THREE.Mesh(barra, flat_2);
+avatar.add(cilindro_flat);
+cilindro_flat.rotation.set(0,0,90*Math.PI/180);
+cilindro_flat.position.set(-200,0,0)    
+    
+    
+var shape_2 = new THREE.SphereGeometry(50,50,50);
+var cover_2 = new THREE.MeshPhongMaterial({color:'white'});
+var ball_2 = new THREE.Mesh(shape_2, cover_2);
+ball_2.position.set(-250,0,0);
+avatar.add(ball_2);
+    
+ //ball3  cabeza 
+    
+    var shape_3 = new THREE.SphereGeometry(80,50,50);
+var cover_3 = new THREE.MeshPhongMaterial({color:'white'});
+var ball_3 = new THREE.Mesh(shape_3, cover_3);
+ball_3.position.set(0,200,0);
+avatar.add(ball_3);
+    
+    
+ //ball4   pierna derecha
+    
+    var barra = new THREE.CylinderGeometry(10,10,150,50);
+var flat_4 = new THREE.MeshPhongMaterial({color :'#f2b177'});
+var cilindro_flat = new THREE.Mesh(barra, flat_4);
+avatar.add(cilindro_flat);
+cilindro_flat.rotation.set(0,0,40*Math.PI/180);
+cilindro_flat.position.set(70,-150,0)
+    
+    var shape_4 = new THREE.SphereGeometry(60,50,50);
+var cover_4 = new THREE.MeshPhongMaterial({color:'red'});
+var ball_4 = new THREE.Mesh(shape_4, cover_4);
+ball_4.position.set(130,-250,0);
+avatar.add(ball_4);
+    
+    
+    
+    //ball5 pierna izquierda
+    
+    
+var barra = new THREE.CylinderGeometry(10,10,150,50);
+var flat_5 = new THREE.MeshPhongMaterial({color :'#f2b177'});
+var cilindro_flat = new THREE.Mesh(barra, flat_5);
+avatar.add(cilindro_flat);
+cilindro_flat.rotation.set(0,0,150*Math.PI/180);
+cilindro_flat.position.set(-70,-150,0)
+    
+    var shape_5 = new THREE.SphereGeometry(60,50,50);
+var cover_5 = new THREE.MeshPhongMaterial({color :'red'});
+var ball_5 = new THREE.Mesh(shape_5, cover_5);
+ball_5.position.set(-120,-250,0);
+avatar.add(ball_5);
+    
+ //movimiento  
+document.addEventListener("keydown", teclaApretada);
 
+function teclaApretada(e) {
+//alert(event.code);
+let codigo = e.code;
 
-  // Now, show what the camera sees on the screen:
-  renderer.render(scene, camera);
+if (codigo =="KeyW") {
+avatar.position.z +=5;
+}
+if (codigo =="KeyS") {
+avatar.position.z -=5;
+}
+if (codigo =="KeyA") {
+avatar.position.x +=5;
+}
+if (codigo =="KeyD") {
+avatar.position.x -=5;
+}
+
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    //rotacion 
+function animate() {
+    requestAnimationFrame(animate);
+    avatar.rotation.z = avatar.rotation.z + 0.05;
+    renderer.render(scene, camera);
+}
+animate();
 </script>
+
