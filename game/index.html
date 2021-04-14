@@ -17,7 +17,7 @@
   // The "camera" is what sees the stuff:
   var aspectRatio = window.innerWidth / window.innerHeight;
   var camera = new THREE.PerspectiveCamera(75, aspectRatio, 1, 10000);
-  camera.position.z = 500;
+  camera.position.z = 800;
   scene.add(camera);
 
   // The "renderer" draws what the camera sees onto the screen:
@@ -151,12 +151,41 @@ if (codigo =="KeyG") {
    
 
 }    
+    function makeTreeAt(x,z){
+    
+    
+        var trunk = new THREE.Mesh(
+            new THREE.CylinderGeometry(50,50,200),
+            new THREE.MeshBasicMaterial({color: 'sienna'})
+        
+        );
      
     
+        var top = new THREE.Mesh(
+    new THREE.SphereGeometry(150),
+    new THREE.MeshBasicMaterial({color: 'forestgreen'})
+    
+    );
+ 
+    top.position.y = 175;
+     trunk.add(top);
     
     
+    trunk.position.set(x,-75,z)
+    scene.add(trunk);
+        
+}     
     
+  function randomtrees(cantidad){
+      
+    for(var i = 1; i < cantidad ; i++)  {
+       makeTreeAt((Math.random()*5000)-2500, -Math.random()*5000); 
+        
+  }
     
+      
+     }   
+      randomtrees(10);
     
     //rotacion 
 function animate() {
