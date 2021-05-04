@@ -27,10 +27,13 @@
   document.body.appendChild(renderer.domElement);
 
   // ******** START CODING ON THE NEXT LINE ********
-
+var marker = new THREE.Object3D();
+    scene.add(marker)
     
       var avatar = new THREE.Mesh(shape_6, cover_6);
     scene.add(avatar)
+    
+    marker.add(camera)
     //ball6 barriga
     
         var shape_6 = new THREE.SphereGeometry(150,50,50);
@@ -120,6 +123,38 @@ ball_5.position.set(-120,-250,0);
 avatar.add(ball_5);
     
     
+    
+    
+    
+    // camara en movimiento 
+  //  var shape_6 = new THREE.Mesh(shape_6,cover_6);
+   // shape_6.position.set(0,0,0);
+   // avatar.add(shape_6);
+    //avatar.add(camera);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
  //movimiento 
     
 let isCartWheeling = true;    
@@ -132,16 +167,16 @@ function teclaApretada(e) {
 let codigo = e.code;
 
 if (codigo =="KeyW") {
-avatar.position.z +=5;
+marker.position.z +=10;
 }
 if (codigo =="KeyS") {
-avatar.position.z -=5;
+marker.position.z -=10;
 }
 if (codigo =="KeyA") {
-avatar.position.x +=5;
+marker.position.x +=10;
 }
 if (codigo =="KeyD") {
-avatar.position.x -=5;
+marker.position.x -=10;
 }
 
 if (codigo =="KeyC") {   
@@ -179,6 +214,10 @@ if (codigo =="KeyG") {
     scene.add(trunk);
         
 }     
+    
+    
+    
+    
     
     
     
