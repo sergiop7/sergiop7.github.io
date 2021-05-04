@@ -12,12 +12,13 @@
   var flat = {flatShading: true};
   var light = new THREE.PointLight('white', 0.8);
   scene.add(light)
-    light.position.set(50,100,200)
+    light.position.set(50,100,2000)
 
   // The "camera" is what sees the stuff:
   var aspectRatio = window.innerWidth / window.innerHeight;
   var camera = new THREE.PerspectiveCamera(75, aspectRatio, 1, 10000);
-  camera.position.z = 800;
+  camera.position.z = 4000;
+  camera.position.y = 800;
   scene.add(camera);
 
   // The "renderer" draws what the camera sees onto the screen:
@@ -118,6 +119,7 @@ var ball_5 = new THREE.Mesh(shape_5, cover_5);
 ball_5.position.set(-120,-250,0);
 avatar.add(ball_5);
     
+    
  //movimiento 
     
 let isCartWheeling = true;    
@@ -150,7 +152,9 @@ if (codigo =="KeyG") {
  mueveteenx= !mueveteenx;   }
    
 
-}    
+}      
+    
+    
     function makeTreeAt(x,z){
     
     
@@ -176,16 +180,33 @@ if (codigo =="KeyG") {
         
 }     
     
-  function randomtrees(cantidad){
-      
-    for(var i = 1; i < cantidad ; i++)  {
-       makeTreeAt((Math.random()*5000)-2500, -Math.random()*5000); 
-        
-  }
     
-      
-     }   
-      randomtrees(10);
+    
+    
+
+    
+    
+    function crear_fila_arboles(z, minimo_x,maximo_x,paso_x){
+        
+        for(var x= minimo_x;x<maximo_x;x=x+paso_x)
+            makeTreeAt(x,z)
+        
+    }
+    
+    
+    
+    
+    
+    function campo_ordenado(minimo_x,minimo_z,maximo_x,maximo_z, paso){
+        for(var z = minimo_z; z < maximo_z; z=z+paso  )
+            crear_fila_arboles(z,minimo_x,maximo_x,paso); 
+        
+        
+    }
+    
+    
+    campo_ordenado(-5000,-5000,5000,5000,1000)
+    
     
     //rotacion 
 function animate() {
@@ -202,4 +223,3 @@ function animate() {
 }
 animate();
 </script>
-
